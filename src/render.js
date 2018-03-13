@@ -9,7 +9,7 @@ import { store, createStore, replaceReducer } from './store'
 let started = false
 let Root
 
-export default function render(component, container, callback) {
+export default function render(component, container, callback, shouldRender = true) {
 
   const { initialState, middlewares, reducers } = options
 
@@ -39,7 +39,7 @@ export default function render(component, container, callback) {
 
   started = true
 
-  global.document && ReactDOM.render(<Root/>, container, callback)
+  shouldRender && global.document && ReactDOM.render(<Root/>, container, callback)
 
   return Root
 }
